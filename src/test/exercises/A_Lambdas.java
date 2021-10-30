@@ -112,9 +112,9 @@ public class A_Lambdas {
      * Write a lambda expression that wraps the given
      * string in parentheses.
      */
-    @Test @Ignore
+    @Test
     public void b_function1() {
-        Function<String, String> func = null; // TODO
+        Function<String, String> func = s -> "(" + s + ")";
 
         assertEquals("(abc)", func.apply("abc"));
     }
@@ -123,9 +123,9 @@ public class A_Lambdas {
      * Write a lambda expression that converts the
      * given string to upper case.
      */
-    @Test @Ignore
+    @Test
     public void b_function2() {
-        Function<String, String> func = null; // TODO
+        Function<String, String> func = s -> s.toUpperCase();
 
         assertEquals("ABC", func.apply("abc"));
     }
@@ -134,9 +134,9 @@ public class A_Lambdas {
      * Write an unbound method reference that converts the
      * given string to upper case.
      */
-    @Test @Ignore
+    @Test
     public void b_function3() {
-        Function<String, String> func = null; // TODO
+        Function<String, String> func = String::toUpperCase;
 
         assertEquals("ABC", func.apply("abc"));
     }
@@ -147,12 +147,12 @@ public class A_Lambdas {
      * create a single function converts nulls and then gets the
      * string's length.
      */
-    @Test @Ignore
+    @Test
     public void b_function4() {
         Function<String, String> unNullify = s -> s == null ? "" : s;
         Function<String, Integer> length = String::length;
 
-        Function<String, Integer> lengthBis = null; // TODO
+        Function<String, Integer> lengthBis = unNullify.andThen(length);
 
         assertEquals((Integer)14, lengthBis.apply("Hello JavaOne!"));
         assertEquals((Integer)0, lengthBis.apply(""));
