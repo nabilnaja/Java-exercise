@@ -333,9 +333,9 @@ public class A_Lambdas {
      * "abcdefghij", or that returns -1 if the string argument
      * doesn't occur.
      */
-    @Test @Ignore
+    @Test
     public void g_boundMethodRef1() {
-        Function<String, Integer> func = null; // TODO
+        Function<String, Integer> func = s -> "abcdefghij".indexOf(s);
 
         assertEquals(2, func.apply("cde").intValue());
         assertEquals(4, func.apply("efg").intValue());
@@ -359,9 +359,9 @@ public class A_Lambdas {
      * This is in contrast to an unbound method reference, which has
      * a classname on the left-hand side of the :: operator.
      */
-    @Test @Ignore
+    @Test
     public void g_boundMethodRef2() {
-        Function<String, Integer> func = null; // TODO
+        Function<String, Integer> func = "abcdefghij"::indexOf;
 
         assertEquals(2, func.apply("cde").intValue());
         assertEquals(4, func.apply("efg").intValue());
