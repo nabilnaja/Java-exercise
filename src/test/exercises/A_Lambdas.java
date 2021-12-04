@@ -224,9 +224,9 @@ public class A_Lambdas {
      * Write a lambda expression that returns a new StringBuilder
      * containing the string "abc".
      */
-    @Test @Ignore
+    @Test
     public void d_supplier1() {
-        Supplier<StringBuilder> sup = null; // TODO
+        Supplier<StringBuilder> sup = () -> new StringBuilder("abc");
 
         assertEquals("abc", sup.get().toString());
     }
@@ -234,9 +234,9 @@ public class A_Lambdas {
     /**
      * Write a lambda expression that returns a new, empty StringBuilder.
      */
-    @Test @Ignore
+    @Test
     public void d_supplier2() {
-        Supplier<StringBuilder> sup = null; // TODO
+        Supplier<StringBuilder> sup = StringBuilder::new;
 
         assertEquals("", sup.get().toString());
     }
