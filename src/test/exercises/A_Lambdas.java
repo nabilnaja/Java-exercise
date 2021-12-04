@@ -289,9 +289,9 @@ public class A_Lambdas {
      * the first occurrence of the second string within the first string,
      * or -1 if the second string doesn't occur within the first string.
      */
-    @Test @Ignore
+    @Test
     public void e_bifunction3() {
-        BiFunction<String, String, Integer> bifunc = null; // TODO
+        BiFunction<String, String, Integer> bifunc = String::indexOf;
 
         assertEquals(3, bifunc.apply("abcdefghij", "def").intValue());
         assertEquals(-1, bifunc.apply("abcdefghij", "xyz").intValue());
