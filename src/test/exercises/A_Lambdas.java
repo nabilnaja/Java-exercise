@@ -246,7 +246,7 @@ public class A_Lambdas {
      */
     @Test
     public void d_supplier3() {
-        Supplier<StringBuilder> sup = StringBuilder::new; // TODO
+        Supplier<StringBuilder> sup = StringBuilder::new;
 
         assertEquals("", sup.get().toString());
     }
@@ -256,9 +256,9 @@ public class A_Lambdas {
      * of concatenating the first with the second, followed by the
      * first again.
      */
-    @Test @Ignore
+    @Test
     public void e_bifunction1() {
-        BiFunction<String, String, String> bifunc = null; // TODO
+        BiFunction<String, String, String> bifunc = (s1, s2) -> s1 + s2 + s1 ;
 
         assertEquals("FirstSecondFirst", bifunc.apply("First", "Second"));
     }
