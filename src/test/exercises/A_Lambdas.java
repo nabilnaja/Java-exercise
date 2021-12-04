@@ -314,12 +314,12 @@ public class A_Lambdas {
      * Write a lambda expression that appends the 'suffix'
      * variable (a String) to the sb variable (a StringBuilder).
      */
-    @Test @Ignore
+    @Test
     public void f_runnable1() {
         StringBuilder sb = new StringBuilder("abc");
         String suffix = "xyz";
 
-        Runnable r = null; // TODO
+        Runnable r = () -> sb.append(suffix);
 
         r.run();
         r.run();
