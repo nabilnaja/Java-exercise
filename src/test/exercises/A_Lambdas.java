@@ -236,7 +236,7 @@ public class A_Lambdas {
      */
     @Test
     public void d_supplier2() {
-        Supplier<StringBuilder> sup = StringBuilder::new;
+        Supplier<StringBuilder> sup = () -> new StringBuilder();
 
         assertEquals("", sup.get().toString());
     }
@@ -244,9 +244,9 @@ public class A_Lambdas {
     /**
      * Write a constructor reference that returns a new, empty StringBuilder.
      */
-    @Test @Ignore
+    @Test
     public void d_supplier3() {
-        Supplier<StringBuilder> sup = null; // TODO
+        Supplier<StringBuilder> sup = StringBuilder::new; // TODO
 
         assertEquals("", sup.get().toString());
     }
