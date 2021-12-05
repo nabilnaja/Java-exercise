@@ -69,9 +69,9 @@ public class B_Comparators {
     /**
      * Write a Comparator that compares instances of Person using their lastName.
      */
-    @Test @Ignore
+    @Test
     public void comparator03() {
-        Comparator<Person> comparebyLastName = null; // TODO
+        Comparator<Person> comparebyLastName = Comparator.comparing(Person::getLastName);
 
         assertTrue(comparebyLastName.compare(michael, rod) < 0);
         assertTrue(comparebyLastName.compare(paul, paul) == 0);
