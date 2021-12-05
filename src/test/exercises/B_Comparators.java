@@ -29,9 +29,9 @@ public class B_Comparators {
      * Write a Comparator that compare instances of String using their length.
      * For instance FOUR (4 letters) is greater than TWO (three letters)
      */
-    @Test @Ignore
+    @Test
     public void comparator01() {
-        Comparator<String> compareByLength = null; // TODO
+        Comparator<String> compareByLength = Comparator.comparing(String::length);
 
         assertTrue(compareByLength.compare("FOUR", "TWO") > 0);
         assertTrue(compareByLength.compare("ONE", "SEVEN") < 0);
