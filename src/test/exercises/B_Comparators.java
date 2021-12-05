@@ -48,9 +48,9 @@ public class B_Comparators {
      * Write a Comparator that compare instances of String using their length.
      * If the lengths are the same, then use the alphabetical order.
      */
-    @Test @Ignore
+    @Test
     public void comparator02() {
-        Comparator<String> compareByLengthThenAlphabetical = null; // TODO
+        Comparator<String> compareByLengthThenAlphabetical = Comparator.comparing(String::length).thenComparing(Comparator.naturalOrder());
 
         assertTrue(compareByLengthThenAlphabetical.compare("FOUR", "TWO") > 0);
         assertTrue(compareByLengthThenAlphabetical.compare("ONE", "SEVEN") < 0);
