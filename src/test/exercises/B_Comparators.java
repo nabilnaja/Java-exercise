@@ -110,9 +110,12 @@ public class B_Comparators {
      * the same last name, the one with the greater first name should be
      * ordered first.
      */
-    @Test @Ignore
+    @Test
     public void comparator05() {
-        Comparator<Person> comparebyLastNameThenFirstNameReversed = null; // TODO
+        Comparator<Person> comparebyLastNameThenFirstNameReversed =
+                Comparator.comparing(Person::getLastName)
+                        .thenComparing(Person::getFirstName)
+                        .reversed();
 
         assertFalse(comparebyLastNameThenFirstNameReversed.compare(michael, rod) < 0);
         assertTrue(comparebyLastNameThenFirstNameReversed.compare(paul, paul) == 0);
