@@ -88,9 +88,11 @@ public class B_Comparators {
      * Write a Comparator that compares instances of Person using their
      * lastName, and if their last name is the same, uses their first name.
      */
-    @Test @Ignore
+    @Test
     public void comparator04() {
-        Comparator<Person> comparebyLastNameThenFirstName = null; // TODO
+        Comparator<Person> comparebyLastNameThenFirstName =
+                Comparator.comparing(Person::getLastName)
+                        .thenComparing(Person::getFirstName);
 
         assertTrue(comparebyLastNameThenFirstName.compare(michael, rod) < 0);
         assertTrue(comparebyLastNameThenFirstName.compare(paul, paul) == 0);
