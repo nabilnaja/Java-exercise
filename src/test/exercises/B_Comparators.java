@@ -131,9 +131,12 @@ public class B_Comparators {
      * one you wrote in comparator04(), but that supports null values. The null
      * values should be considered greater than any non-null values.
      */
-    @Test @Ignore
+    @Test
     public void comparator06() {
-        Comparator<Person> comparebyLastNameThenFirstNameWithNull = null; // TODO
+        Comparator<Person> comparebyLastNameThenFirstNameWithNull =
+                Comparator.nullsLast(
+                        Comparator.comparing(Person::getLastName)
+                                .thenComparing(Person::getFirstName));
 
         assertTrue(comparebyLastNameThenFirstNameWithNull.compare(michael, rod) < 0);
         assertTrue(comparebyLastNameThenFirstNameWithNull.compare(paul, paul) == 0);
