@@ -153,9 +153,9 @@ public class B_Comparators {
      * Write a Comparator that compares two people by age.
      * Try to write the comparator so as to avoid boxing of primitives.
      */
-    @Test @Ignore
+    @Test
     public void comparator07() {
-        Comparator<Person> comparebyAge = null; // TODO
+        Comparator<Person> comparebyAge = Comparator.comparingInt(Person::getAge);
 
         assertTrue(comparebyAge.compare(michael, rod) < 0);
         assertTrue(comparebyAge.compare(paul, paul) == 0);
