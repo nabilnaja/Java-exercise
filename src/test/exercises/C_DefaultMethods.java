@@ -47,7 +47,7 @@ public class C_DefaultMethods {
         List<String> list = new ArrayList<>(Arrays.asList(
             "alfa", "bravo", "charlie", "delta", "echo", "foxtrot"));
 
-        // TODO write code to modify list
+        list.removeIf(s -> (s.length() & 1) == 1);
 
         assertEquals(List.of("alfa", "echo"), list);
     }
