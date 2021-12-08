@@ -19,14 +19,14 @@ public class C_DefaultMethods {
      * Given a list of StringBuilders, modify each StringBuilder
      * in-place by appending the string "new" to each one.
      */
-    @Test @Ignore
+    @Test
     public void c01_appendNew() {
         List<StringBuilder> sbList = List.of(
             new StringBuilder("alfa"),
             new StringBuilder("bravo"),
             new StringBuilder("charlie"));
 
-        // TODO write code to modify sbList
+        sbList.forEach(s -> s.append("new"));
 
         assertEquals(List.of("alfanew", "bravonew", "charlienew"),
                      sbList.stream()
