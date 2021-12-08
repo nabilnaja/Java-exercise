@@ -42,7 +42,7 @@ public class C_DefaultMethods {
     /**
      * Remove the words that have odd lengths from the list.
      */
-    @Test @Ignore
+    @Test
     public void c02_removeOddLengthWords() {
         List<String> list = new ArrayList<>(Arrays.asList(
             "alfa", "bravo", "charlie", "delta", "echo", "foxtrot"));
