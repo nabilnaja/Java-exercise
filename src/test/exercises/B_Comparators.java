@@ -194,9 +194,9 @@ public class B_Comparators {
      * int result that is less than, equal to, or greater than zero, like
      * a comparator.
      */
-    @Test @Ignore
+    @Test
     public void comparator09() {
-        IntBinaryOperator intCompare = null; // TODO
+        IntBinaryOperator intCompare = Integer::compare;
 
         assertTrue(intCompare.applyAsInt(0, 1) < 0);
         assertTrue(intCompare.applyAsInt(1, 1) == 0);
