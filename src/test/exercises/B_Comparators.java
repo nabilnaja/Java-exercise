@@ -221,9 +221,9 @@ public class B_Comparators {
      * special cases such NaN. Consider all NaN values to be equal to each other
      * and greater than any non-NaN value.
      */
-    @Test @Ignore
+    @Test
     public void comparator10() {
-        DoubleToIntBiFunction doubleCompare = null; // TODO
+        DoubleToIntBiFunction doubleCompare = Double::compare;
 
         assertTrue(doubleCompare.applyAsInt(0.0, 1.0) < 0);
         assertTrue(doubleCompare.applyAsInt(1.0, 1.0) == 0);
