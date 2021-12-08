@@ -174,9 +174,9 @@ public class B_Comparators {
      * two objects, but in this case we are comparing int primitives, so the
      * functional interface we use is IntBinaryOperator.
      */
-    @Test @Ignore
+    @Test
     public void comparator08() {
-        IntBinaryOperator intCompare = null; // TODO
+        IntBinaryOperator intCompare = (a, b) -> (a < b) ? -1 : (a > b) ? 1 : 0;
 
         assertTrue(intCompare.applyAsInt(0, 1) < 0);
         assertTrue(intCompare.applyAsInt(1, 1) == 0);
