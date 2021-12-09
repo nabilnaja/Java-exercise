@@ -81,14 +81,14 @@ public class C_DefaultMethods {
      * append to each StringBuilder the string representation of its corresponding
      * Integer key. This should mutate each StringBuilder value in-place.
      */
-    @Test @Ignore
+    @Test
     public void c04_appendToMapValues() {
         Map<Integer, StringBuilder> map = new TreeMap<>();
         map.put(1, new StringBuilder("alfa"));
         map.put(2, new StringBuilder("bravo"));
         map.put(3, new StringBuilder("charlie"));
 
-        // TODO write code to modify map
+        map.forEach((k, v) -> v.append(k));
 
         assertEquals(3, map.size());
         assertTrue(map.values().stream().allMatch(x -> x instanceof StringBuilder));
