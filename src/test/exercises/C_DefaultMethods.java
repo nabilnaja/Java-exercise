@@ -60,12 +60,12 @@ public class C_DefaultMethods {
     /**
      * Replace every word in the list with its upper case equivalent.
      */
-    @Test @Ignore
+    @Test
     public void c03_upcaseAllWords() {
         List<String> list = Arrays.asList(
             "alfa", "bravo", "charlie", "delta", "echo", "foxtrot");
 
-        // TODO code to modify list
+        list.replaceAll(String::toUpperCase);
 
         assertEquals(List.of("ALFA", "BRAVO", "CHARLIE", "DELTA", "ECHO", "FOXTROT"),
                      list);
