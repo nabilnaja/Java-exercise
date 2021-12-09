@@ -107,14 +107,14 @@ public class C_DefaultMethods {
      * append to each String the string representation of its corresponding
      * Integer key.
      */
-    @Test @Ignore
+    @Test
     public void c05_replaceMapValues() {
         Map<Integer, String> map = new TreeMap<>();
         map.put(1, "alfa");
         map.put(2, "bravo");
         map.put(3, "charlie");
 
-        // TODO write code to modify map
+        map.replaceAll((key, value) -> value + key);
 
         assertEquals(Map.of(1, "alfa1",
                             2, "bravo2",
