@@ -216,7 +216,7 @@ public class C_DefaultMethods {
      * We've now determined that's incorrect, and we want to undo that. This
      * time, we want to remove the entry if the value is the empty string.
      */
-    @Test @Ignore
+    @Test
     public void c09_mapRemoveEntriesWithEmptyValues() {
         List<String> keys = Arrays.asList("a", "b", "c", "d", "e", "f", "g");
         Map<String, String> map = new HashMap<>(Map.of("a", "alfa",
@@ -227,7 +227,7 @@ public class C_DefaultMethods {
                                                        "f", "",
                                                        "g", ""));
 
-        // TODO write code to fix the map
+        keys.forEach(key -> map.remove(key, ""));
 
         assertEquals(Map.of("a", "alfa",
                             "b", "bravo",
