@@ -159,7 +159,7 @@ public class C_DefaultMethods {
      * initial character. When concatenating the words, they should be
      * separated by a colon (':').
      */
-    @Test @Ignore
+    @Test
     public void c07_mapOfStringByInitialCharacter() {
         List<String> list = List.of(
             "aardvark", "bison", "capybara",
@@ -167,7 +167,7 @@ public class C_DefaultMethods {
             "avocet", "bustard", "capuchin");
         Map<Character, String> result = new TreeMap<>();
 
-        // TODO write code to populate result
+        list.forEach(s -> result.merge(s.charAt(0), s, (s1, s2) -> s1 + ":" + s2));
 
         assertEquals(Map.of('a', "aardvark:alligator:avocet",
                             'b', "bison:bushbaby:bustard",
