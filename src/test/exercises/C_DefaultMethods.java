@@ -131,7 +131,7 @@ public class C_DefaultMethods {
      * Given a list of words, populate a map whose keys are the lengths of
      * each word, and whose values are list of words with that length.
      */
-    @Test @Ignore
+    @Test
     public void c06_mapOfListOfStringsByLength() {
         List<String> list = List.of(
             "aardvark", "bison", "capybara",
@@ -139,7 +139,7 @@ public class C_DefaultMethods {
             "avocet", "bustard", "capuchin");
         Map<Integer, List<String>> result = new TreeMap<>();
 
-        // TODO write code to populate result
+        list.forEach(s -> result.computeIfAbsent(s.length(), key -> new ArrayList<>()).add(s));
 
         assertEquals(Map.of( 5, List.of("bison"),
                              6, List.of("avocet"),
