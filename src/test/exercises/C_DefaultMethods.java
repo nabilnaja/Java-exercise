@@ -186,7 +186,7 @@ public class C_DefaultMethods {
      * null, and we need to add checks to protect against NullPointerException.
      * Write code to ensure that all missing keys are mapped to the empty string.
      */
-    @Test @Ignore
+    @Test
     public void c08_mapWithMissingValues() {
         List<String> keys = Arrays.asList("a", "b", "c", "d", "e", "f", "g");
         Map<String, String> map = new HashMap<>(Map.of("a", "alfa",
@@ -194,7 +194,7 @@ public class C_DefaultMethods {
                                                        "c", "charlie",
                                                        "d", "delta"));
 
-        // TODO write code to fix the map
+        keys.forEach(key -> map.putIfAbsent(key, ""));
 
         assertEquals(Map.of("a", "alfa",
                             "b", "bravo",
