@@ -313,7 +313,7 @@ public class C_DefaultMethods {
      * the non-empty values to upper case, but we want to remove the entries
      * for which the values are the empty string.
      */
-    @Test @Ignore
+    @Test
     public void c12_computeAndRemoveSomeEntries() {
         List<String> keys = Arrays.asList("a", "b", "c", "d", "e", "f", "g");
         Map<String, String> map = new HashMap<>(Map.of("a", "alfa",
@@ -324,7 +324,7 @@ public class C_DefaultMethods {
                                                        "f", "",
                                                        "g", ""));
 
-        // TODO write code transform the map
+        keys.forEach(key -> map.compute(key, (k, v) -> v.isEmpty() ? null : v.toUpperCase()));
 
         assertEquals(Map.of("a", "ALFA",
                             "b", "BRAVO",
