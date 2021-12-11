@@ -281,7 +281,7 @@ public class C_DefaultMethods {
      * that are not present, we want to add an entry where the value is the
      * same as the key.
      */
-    @Test @Ignore
+    @Test
     public void c11_computeWithMissingEntries() {
         List<String> keys = Arrays.asList("a", "b", "c", "d", "e", "f", "g");
         Map<String, String> map = new HashMap<>(Map.of("a", "alfa",
@@ -289,7 +289,7 @@ public class C_DefaultMethods {
                                                        "c", "charlie",
                                                        "d", "delta"));
 
-        // TODO write code transform the map
+        keys.forEach(key -> map.compute(key, (k, v) -> v == null ? k : v.toUpperCase()));
 
         assertEquals(Map.of("a", "ALFA",
                             "b", "BRAVO",
