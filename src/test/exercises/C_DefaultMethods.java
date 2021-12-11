@@ -247,7 +247,7 @@ public class C_DefaultMethods {
      * to replace the empty-string values with a value that's the key itself.
      * Write the code to do that.
      */
-    @Test @Ignore
+    @Test
     public void c10_mapReplaceEmptyValues() {
         List<String> keys = Arrays.asList("a", "b", "c", "d", "e", "f", "g");
         Map<String, String> map = new HashMap<>(Map.of("a", "alfa",
@@ -258,7 +258,7 @@ public class C_DefaultMethods {
                                                        "f", "",
                                                        "g", ""));
 
-        // TODO write code to fix the map
+        keys.forEach(key -> map.replace(key, "", key));
 
         assertEquals(Map.of("a", "alfa",
                             "b", "bravo",
