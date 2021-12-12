@@ -85,9 +85,9 @@ public class D_SimpleStreams {
      *
      * @throws IOException
      */
-    @Test @Ignore
+    @Test
     public void d3_countLinesInFile() throws IOException {
-        long count = 0; // TODO
+        long count = reader.lines().count();
 
         assertEquals(14, count);
     }
