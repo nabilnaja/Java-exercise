@@ -55,12 +55,16 @@ public class D_SimpleStreams {
      * second letter from each, and join them, separated by commas,
      * into a single string. Watch for off-by-one errors.
      */
-    @Test @Ignore
+    @Test
     public void d2_joinStreamRange() {
         List<String> input = List.of(
                 "alfa", "bravo", "charlie", "delta", "echo", "foxtrot");
 
-        String result = ""; // TODO
+        String result = input.stream()
+                .skip(2)
+                .limit(3)
+                .map(word -> word.substring(1, 2))
+                .collect(Collectors.joining(","));
 
         assertEquals("h,e,c", result);
     }
