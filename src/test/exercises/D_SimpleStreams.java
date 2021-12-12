@@ -11,6 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
@@ -26,12 +27,15 @@ public class D_SimpleStreams {
      * Given a list of words, create an output list that contains
      * only the odd-length words, converted to upper case.
      */
-    @Test @Ignore
+    @Test
     public void d1_upcaseOddLengthWords() {
         List<String> input = List.of(
                 "alfa", "bravo", "charlie", "delta", "echo", "foxtrot");
 
-        List<String> result = null; // TODO
+        List<String> result = input.stream()
+                .filter(w -> (w.length() & 1) == 1)
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
 
         assertEquals(List.of("BRAVO", "CHARLIE", "DELTA", "FOXTROT"), result);
     }
