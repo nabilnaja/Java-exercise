@@ -158,12 +158,19 @@ public class D_SimpleStreams {
      * Select the longest words from the input list. That is, select the words
      * whose lengths are equal to the maximum word length.
      */
-    @Test @Ignore
+    @Test
     public void d6_selectLongestWords() {
         List<String> input = List.of(
                 "alfa", "bravo", "charlie", "delta", "echo", "foxtrot", "golf", "hotel");
 
-        List<String> result = null; // TODO
+        int max = input.stream()
+                .mapToInt(String::length)
+                .max()
+                .orElse(-1);
+
+        List<String> result = input.stream()
+                .filter(s -> s.length() == max)
+                .collect(Collectors.toList());
 
         assertEquals(List.of("charlie", "foxtrot"), result);
     }
