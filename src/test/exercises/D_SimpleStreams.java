@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -135,9 +136,11 @@ public class D_SimpleStreams {
      *
      * @throws IOException
      */
-    @Test @Ignore
+    @Test
     public void d5_findLongestLine() throws IOException {
-        String longest = null; // TODO
+        String longest = reader.lines()
+                .max(Comparator.comparingInt(String::length))
+                .orElse("");
 
         assertEquals("Feed'st thy light's flame with self-substantial fuel,", longest);
     }
