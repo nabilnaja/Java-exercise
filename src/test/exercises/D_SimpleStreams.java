@@ -106,9 +106,12 @@ public class D_SimpleStreams {
      *
      * @throws IOException
      */
-    @Test @Ignore
+    @Test
     public void d4_findLengthOfLongestLine() throws IOException {
-        int longestLength = 0; // TODO
+        int longestLength = reader.lines()
+                .mapToInt(String::length)
+                .max()
+                .orElse(0);
 
         assertEquals(53, longestLength);
     }
