@@ -13,6 +13,7 @@ import java.nio.file.Paths;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertEquals;
 
@@ -183,12 +184,15 @@ public class D_SimpleStreams {
      * Select the list of words from the input list whose length is greater than
      * the word's position in the list (starting from zero) .
      */
-    @Test @Ignore
+    @Test
     public void d7_selectByLengthAndPosition() {
         List<String> input = List.of(
                 "alfa", "bravo", "charlie", "delta", "echo", "foxtrot", "golf", "hotel");
 
-        List<String> result = null; // TODO
+        List<String> result = IntStream.range(0, input.size())
+                .filter(pos -> input.get(pos).length() > pos)
+                .mapToObj(pos -> input.get(pos))
+                .collect(Collectors.toList());
 
         assertEquals(List.of("alfa", "bravo", "charlie", "delta", "foxtrot"), result);
     }
