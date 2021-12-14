@@ -60,9 +60,11 @@ public class E_IntermediateStreams {
      *
      * @throws IOException
      */
-    @Test @Ignore
+    @Test
     public void e2_listOfAllWords() throws IOException {
-        List<String> output = null; // TODO
+        List<String> output = reader.lines()
+                .flatMap(line -> SPLIT_PATTERN.splitAsStream(line))
+                .collect(Collectors.toList());
 
         assertEquals(
             List.of(
