@@ -98,8 +98,7 @@ public class E_IntermediateStreams {
      */
     @Test
     public void e3_longLowerCaseSortedWords() throws IOException {
-        List<String> output =
-        reader.lines()
+        List<String> output = reader.lines()
                 .flatMap(line -> SPLIT_PATTERN.splitAsStream(line))
                 .filter(word -> word.length() >= 8)
                 .map(String::toLowerCase)
@@ -125,9 +124,14 @@ public class E_IntermediateStreams {
      *
      * @throws IOException
      */
-    @Test @Ignore
+    @Test
     public void e4_longLowerCaseReverseSortedWords() throws IOException {
-        List<String> result = null; // TODO
+        List<String> result = reader.lines()
+                        .flatMap(line -> SPLIT_PATTERN.splitAsStream(line))
+                        .filter(word -> word.length() >= 8)
+                        .map(String::toLowerCase)
+                        .sorted(Comparator.reverseOrder())
+                        .collect(Collectors.toList());
 
         assertEquals(
             List.of(
