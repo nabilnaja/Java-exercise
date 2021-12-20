@@ -218,9 +218,11 @@ public class E_IntermediateStreams {
      * @throws IOException
      */
     @Test
-    @Ignore
     public void e7_getLastWord() throws IOException {
-        String result = null; // TODO
+        String result = reader.lines()
+                .flatMap(line -> SPLIT_PATTERN.splitAsStream(line))
+                .reduce((a, b) -> b)
+                .orElse("");
 
         assertEquals("thee", result);
     }
