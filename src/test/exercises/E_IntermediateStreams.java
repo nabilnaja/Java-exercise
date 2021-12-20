@@ -235,11 +235,12 @@ public class E_IntermediateStreams {
      * Create a list containing ArrayList.class and all its super classes.
      */
     @Test
-    @Ignore
     public void e8_selectTheSuperClassesOfArrayList() {
         Class<?> origin = ArrayList.class;
 
-        List<String> result = null; // TODO
+        List<Class<?>> result = Stream.<Class<?>>iterate(origin, Class::getSuperclass)
+                .takeWhile(Objects::nonNull)
+                .collect(Collectors.toList());
 
         assertEquals(
                 List.of(ArrayList.class, AbstractList.class, AbstractCollection.class, Object.class),
