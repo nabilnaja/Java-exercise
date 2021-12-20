@@ -14,6 +14,7 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
@@ -192,9 +193,10 @@ public class E_IntermediateStreams {
      * Long.MAX_VALUE, so you must use BigInteger.
      */
     @Test
-    @Ignore
     public void e6_bigFactorial() {
-        BigInteger result = BigInteger.ONE; // TODO
+        BigInteger result = LongStream.rangeClosed(1, 21)
+                .mapToObj(BigInteger::valueOf)
+                .reduce(BigInteger.ONE, BigInteger::multiply);
 
         assertEquals(new BigInteger("51090942171709440000"), result);
     }
