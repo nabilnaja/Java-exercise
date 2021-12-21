@@ -37,7 +37,7 @@ public class F_AdvancedStreams {
      *
      * @throws IOException
      */
-    @Test @Ignore
+    @Test
     public void f1_mapLengthToWordList() throws IOException {
         Map<Integer, List<String>> result = reader.lines()
                 .flatMap(line -> SPLIT_PATTERN.splitAsStream(line))
