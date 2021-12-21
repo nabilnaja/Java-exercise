@@ -39,7 +39,9 @@ public class F_AdvancedStreams {
      */
     @Test @Ignore
     public void f1_mapLengthToWordList() throws IOException {
-        Map<Integer, List<String>> result = null; // TODO
+        Map<Integer, List<String>> result = reader.lines()
+                .flatMap(line -> SPLIT_PATTERN.splitAsStream(line))
+                .collect(Collectors.groupingBy(String::length));
 
         assertEquals(10, result.get(7).size());
         assertEquals(Set.of("beauty's", "increase", "ornament"), new HashSet<>(result.get(8)));
