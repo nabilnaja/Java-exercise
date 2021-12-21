@@ -65,9 +65,11 @@ public class F_AdvancedStreams {
      *
      * @throws IOException
      */
-    @Test @Ignore
+    @Test
     public void f2_mapLengthToWordCount() throws IOException {
-        Map<Integer, Long> result = null; // TODO
+        Map<Integer, Long> result = reader.lines()
+                .flatMap(line -> SPLIT_PATTERN.splitAsStream(line))
+                .collect(Collectors.groupingBy(String::length, Collectors.counting()));
 
         assertEquals(Map.ofEntries(entry( 1,  1L),
                                    entry( 2, 11L),
