@@ -259,7 +259,6 @@ public class E_IntermediateStreams {
      * Count the length of a stream dropping the first elements on a predicate.
      */
     @Test
-    @Ignore
     public void e9_countTheElementsAfterAPredicate() {
 
         Random rand = new Random(314L);
@@ -272,7 +271,7 @@ public class E_IntermediateStreams {
                                     : s;
                 }).limit(100);
 
-        long count = 0L; // TODO
+        long count = stream.dropWhile(s -> s.length() < 3).count();
 
         assertEquals(53, count);
     }
