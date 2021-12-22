@@ -11,6 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -103,9 +104,11 @@ public class F_AdvancedStreams {
      *
      * @throws IOException
      */
-    @Test @Ignore
+    @Test
     public void f3_wordFrequencies() throws IOException {
-        Map<String, Long> result = null; // TODO
+        Map<String, Long> result = reader.lines()
+                .flatMap(line -> SPLIT_PATTERN.splitAsStream(line))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
         assertEquals(2L, (long)result.get("tender"));
         assertEquals(6L, (long)result.get("the"));
