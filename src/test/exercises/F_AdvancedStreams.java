@@ -211,14 +211,21 @@ public class F_AdvancedStreams {
      * is a parallel stream, so you MUST write a proper combiner function to get the
      * correct result.
      */
-    @Test @Ignore
+    @Test
     public void f6_insertBeginningAndEnd() {
         Stream<String> input = List.of(
             "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
             "k", "l", "m", "n", "o", "p", "q", "r", "s", "t")
             .parallelStream();
 
-        String result = input.collect(null, null, null).toString();
+        String result = input.collect(StringBuilder::new,
+                        (sb, s) -> sb.insert(0, s).append(s),
+                        (sb1, sb2) -> {
+                            int half = sb2.length() / 2;
+                            sb1.insert(0, sb2.substring(0, half));
+                            sb1.append(sb2.substring(half));
+                        })
+                .toString();
         // TODO fill in lambda expressions or method references
         // in place of the nulls in the line above.
 
