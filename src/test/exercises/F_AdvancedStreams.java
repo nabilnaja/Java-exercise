@@ -178,12 +178,17 @@ public class F_AdvancedStreams {
      * in this stream. Since the input is a stream, this necessitates making a single
      * pass over the input.
      */
-    @Test @Ignore
+    @Test
     public void f5_separateOddEvenSums() {
         IntStream input = new Random(987523).ints(20, 0, 100);
 
-        int sumEvens = 0; // TODO
-        int sumOdds  = 0; // TODO
+        Map<Boolean, Integer> sums =
+                input.boxed()
+                        .collect(Collectors.partitioningBy(i -> (i & 1) == 1,
+                                Collectors.summingInt(i -> i)));
+
+        int sumEvens = sums.get(false);
+        int sumOdds  = sums.get(true);
 
         assertEquals(516, sumEvens);
         assertEquals(614, sumOdds);
