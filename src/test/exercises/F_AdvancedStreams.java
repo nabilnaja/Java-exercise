@@ -267,12 +267,13 @@ public class F_AdvancedStreams {
         // rely on implicit no-arg constructor
 
         void accumulate(String s) {
-            // TODO write code to accumulate a single string into this object
+            count++;
+            set.add(s);
         }
 
         void combine(TotalAndDistinct other) {
-            // TODO write code to combine the other object into this one
-        }
+            count += other.count;
+            set.addAll(other.set);        }
 
         int getTotalCount() { return count; }
         int getDistinctCount() { return set.size(); }
