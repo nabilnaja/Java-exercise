@@ -284,7 +284,7 @@ public class F_AdvancedStreams {
     // Don't overthink it.
     // </editor-fold>
 
-    @Test @Ignore
+    @Test
     public void f7_countTotalAndDistinctWords() {
         List<String> allWords = reader.lines()
                                       .map(String::toLowerCase)
