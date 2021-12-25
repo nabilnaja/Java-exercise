@@ -9,7 +9,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Set;
+import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -33,9 +35,12 @@ public class G_MatcherScanner {
      * been loaded into the String variable SONNET, using the Matcher class, and
      * process the results using a Stream.
      */
-    @Test @Ignore
+    @Test
     public void g1_wordsWithApostrophes() {
-        Set<String> result = null; // TODO
+        Set<String> result = WORD_PAT.matcher(SONNET)
+                .results()
+                .map(MatchResult::group)
+                .collect(Collectors.toSet());
 
         assertEquals(Set.of("Feed'st", "mak'st"), result);
     }
