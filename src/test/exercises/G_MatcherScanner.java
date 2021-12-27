@@ -98,9 +98,13 @@ public class G_MatcherScanner {
      * but the advantage of Scanner is that it operate on a file, an InputStream,
      * or a Channel, and all the input need not be loaded into memory.)
      */
-    @Test @Ignore
+    @Test
     public void g4_firstLongWhitespaceSeparatedToken() {
-        String result = null; // TODO
+        String result = new Scanner(SONNET)
+                .tokens()
+                .filter(s -> s.length() >= 10)
+                .findFirst()
+                .orElseThrow(AssertionError::new);
 
         assertEquals("contracted", result);
     }
