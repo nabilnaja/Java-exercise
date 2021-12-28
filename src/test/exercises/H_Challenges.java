@@ -39,7 +39,7 @@ public class H_Challenges {
      *     ...
      *   ]
      */
-    @Test @Ignore
+    @Test
     public void h1_denormalizeMap() {
         Map<Integer, List<String>> input = new HashMap<>();
         input.put(4, Arrays.asList("ibex", "hedgehog", "wombat"));
@@ -48,7 +48,9 @@ public class H_Challenges {
         input.put(10, Arrays.asList("crab", "lobster", "scorpion"));
         input.put(750, Arrays.asList("millipede"));
 
-        List<String> result = null; // TODO
+        List<String> result = new ArrayList<>();
+        input.forEach((legs, names) ->
+                names.forEach(name -> result.add(name + ":" + legs)));
 
         assertEquals(13, result.size());
         assertTrue(result.contains("ibex:4"));
