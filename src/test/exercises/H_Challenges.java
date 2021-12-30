@@ -115,7 +115,12 @@ public class H_Challenges {
         input.put("e", new HashSet<>(Arrays.asList(2, 4)));
         input.put("f", new HashSet<>(Arrays.asList(3, 4)));
 
-        Map<Integer, Set<String>> result = null; // TODO
+        Map<Integer, Set<String>> result = input.entrySet().stream()
+                .flatMap(e -> e.getValue().stream()
+                        .map(v -> new AbstractMap.SimpleEntry<>(e.getKey(), v)))
+                .collect(Collectors.groupingBy(Map.Entry::getValue,
+                        Collectors.mapping(Map.Entry::getKey,
+                                Collectors.toSet())));
 
         assertEquals(new HashSet<>(Arrays.asList("a", "c", "d")), result.get(1));
         assertEquals(new HashSet<>(Arrays.asList("a", "b", "e")), result.get(2));
