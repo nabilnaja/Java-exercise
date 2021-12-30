@@ -105,7 +105,7 @@ public class H_Challenges {
      * pipeline (not counting nested streams), that is, in a single pass
      * over the input, without storing anything in a temporary collection.
      */
-    @Test @Ignore
+    @Test
     public void h2_invertMultiMap() {
         Map<String, Set<Integer>> input = new HashMap<>();
         input.put("a", new HashSet<>(Arrays.asList(1, 2)));
