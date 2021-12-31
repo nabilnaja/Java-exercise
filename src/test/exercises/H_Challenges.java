@@ -155,8 +155,7 @@ public class H_Challenges {
             "echo", "foxtrot", "golf", "hotel").parallel();
 
         List<String> result = input.collect(
-            Collector.of(null, null, null, null));
-        // TODO implement a collector by replacing the nulls above
+                Collector.of(Longest::new, Longest::acc, Longest::comb, Longest::finish));
 
         assertEquals(Arrays.asList("charlie", "foxtrot"), result);
     }
@@ -364,4 +363,35 @@ public class H_Challenges {
     // A filtering collector and a flatMapping collector have been added
     // to JDK9.
     // </editor-fold>
+
+    static class Longest {
+        int len = -1;
+        List<String> list = new ArrayList<>();
+
+        void acc(String s) {
+            int slen = s.length();
+            if (slen == len) {
+                list.add(s);
+            } else if (slen > len) {
+                len = slen;
+                list.clear();
+                list.add(s);
+            } // ignore input string if slen < len
+        }
+
+        Longest comb(Longest other) {
+            if (this.len > other.len) {
+                return this;
+            } else if (this.len < other.len) {
+                return other;
+            } else {
+                this.list.addAll(other.list);
+                return this;
+            }
+        }
+
+        List<String> finish() {
+            return list;
+        }
+    }
 }
