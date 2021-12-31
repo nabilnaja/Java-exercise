@@ -148,7 +148,7 @@ public class H_Challenges {
      * The type of the input is a Stream, so you cannot access elements at random.
      * The stream is run in parallel, so the combiner function must be correct.
      */
-    @Test @Ignore
+    @Test
     public void h3_selectLongestWordsOnePass() {
         Stream<String> input = Stream.of(
             "alfa", "bravo", "charlie", "delta",
