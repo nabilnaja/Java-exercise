@@ -178,7 +178,15 @@ public class H_Challenges {
     public void h4_splitCharacterRuns() {
         String input = "aaaaabbccccdeeeeeeaaafff";
 
-        List<String> result = null; // TODO
+        int[] bounds =
+                IntStream.rangeClosed(0, input.length())
+                        .filter(i -> i == 0 || i == input.length() ||
+                                input.charAt(i-1) != input.charAt(i))
+                        .toArray();
+
+        List<String> result = IntStream.range(1, bounds.length)
+                .mapToObj(i -> input.substring(bounds[i-1], bounds[i]))
+                .collect(Collectors.toList());
 
         assertEquals("[aaaaa, bb, cccc, d, eeeeee, aaa, fff]", result.toString());
     }
