@@ -174,7 +174,7 @@ public class H_Challenges {
      * similar to Python's itertools.groupby function, but it differs
      * from Java's Collectors.groupingBy() collector.
      */
-    @Test @Ignore
+    @Test
     public void h4_splitCharacterRuns() {
         String input = "aaaaabbccccdeeeeeeaaafff";
 
