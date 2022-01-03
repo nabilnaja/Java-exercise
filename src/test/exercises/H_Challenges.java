@@ -207,9 +207,8 @@ public class H_Challenges {
         Stream<String> input =
             IntStream.range(0, 100).mapToObj(String::valueOf).parallel();
 
-        Collection<String> result =
-            input.collect(Collector.of(null, null, null));
-            // TODO fill in collector functions above
+        Collection<String> result = input.collect(Collector.of(ArrayDeque::new, ArrayDeque::addFirst,
+                (d1, d2) -> { d2.addAll(d1); return d2; }));
 
         assertEquals(
             IntStream.range(0, 100)
