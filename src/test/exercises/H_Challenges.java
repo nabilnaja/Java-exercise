@@ -202,7 +202,7 @@ public class H_Challenges {
      * Since the stream is parallel, you MUST write a proper combiner function in order to get
      * the correct result.
      */
-    @Test @Ignore
+    @Test
     public void h5_reversingCollector() {
         Stream<String> input =
             IntStream.range(0, 100).mapToObj(String::valueOf).parallel();
