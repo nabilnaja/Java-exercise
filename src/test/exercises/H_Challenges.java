@@ -239,7 +239,19 @@ public class H_Challenges {
      */
 
     OptionalInt majority(int[] array) {
-        return null; // TODO
+        //TODO//return null;
+        //BEGINREMOVE
+        Map<Integer, Long> map =
+                Arrays.stream(array)
+                        .boxed()
+                        .collect(Collectors.groupingBy(x -> x,
+                                Collectors.counting()));
+
+        return map.entrySet().stream()
+                .filter(e -> e.getValue() > array.length / 2)
+                .mapToInt(Map.Entry::getKey)
+                .findAny();
+        //ENDREMOVE
     }
     // Hint:
     // <editor-fold defaultstate="collapsed">
