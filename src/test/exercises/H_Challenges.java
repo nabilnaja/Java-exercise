@@ -259,7 +259,7 @@ public class H_Challenges {
     // and a majority-finding pass.
     // </editor-fold>
 
-    @Test @Ignore
+    @Test
     public void h6_majority() {
         int[] array1 = { 13, 13, 24, 35, 24, 24, 35, 24, 24 };
         int[] array2 = { 13, 13, 24, 35, 24, 24, 35, 24 };
