@@ -299,7 +299,7 @@ public class H_Challenges {
         }
     }
 
-    @Test @Ignore
+    @Test
     public void h7_shoemaker() {
         Supplier<Shoe> sup1 = makeShoeSupplier(Shoe::new, 9);
         Supplier<Shoe> sup2 = makeShoeSupplier(Shoe::new, 13);
