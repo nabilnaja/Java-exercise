@@ -282,7 +282,7 @@ public class H_Challenges {
      * programming concept called "partial application."
      */
     Supplier<Shoe> makeShoeSupplier(IntFunction<Shoe> ifunc, int size) {
-        return null; // TODO
+        return () -> ifunc.apply(size);
     }
     // Hint:
     // <editor-fold defaultstate="collapsed">
