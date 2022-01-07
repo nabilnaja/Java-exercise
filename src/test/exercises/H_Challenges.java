@@ -326,7 +326,7 @@ public class H_Challenges {
      * create a map with two boolean keys, true is associated to the interfaces
      * and false with the concrete classes.
      */
-    @Test @Ignore
+    @Test
     public void h8_mapOfClassesAndInterfaces() {
 
         Class<?> origin = ArrayList.class;
