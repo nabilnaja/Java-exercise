@@ -4,8 +4,11 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.Serializable;
+import java.lang.reflect.Modifier;
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.IntFunction;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -327,7 +330,18 @@ public class H_Challenges {
     public void h8_mapOfClassesAndInterfaces() {
 
         Class<?> origin = ArrayList.class;
-        Map<Boolean, Set<Class<?>>> result = null; // TODO
+        Stream<Class<?>> classesAndInterfaces =
+                Stream.<Class<?>>iterate(origin, Class::getSuperclass)
+                        .takeWhile(Objects::nonNull)
+                        .flatMap(c -> Stream.of(Stream.of(c), Arrays.stream(c.getInterfaces())))
+                        .flatMap(Function.identity());
+
+        Predicate<Class<?>> isConcrete = c -> ! Modifier.isAbstract(c.getModifiers());
+        Predicate<Class<?>> isInterface = Class::isInterface;
+
+        Map<Boolean, Set<Class<?>>> result =
+                classesAndInterfaces.filter(isInterface.or(isConcrete))
+                        .collect(Collectors.partitioningBy(isInterface, Collectors.toSet()));
 
         assertEquals(Map.of(false, Set.of(ArrayList.class, Object.class),
                             true,  Set.of(List.class, RandomAccess.class, Cloneable.class,
