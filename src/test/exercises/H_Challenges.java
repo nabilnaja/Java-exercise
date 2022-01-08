@@ -366,7 +366,7 @@ public class H_Challenges {
      * and false with the concrete classes. Do that for the provided classes, and
      * arrange the result in a Map<Class, ...> with those classes as the keys.
      */
-    @Test @Ignore
+    @Test
     public void h9_mapOfMapsOfClassesAndInterfaces() {
 
         List<Class<?>> origin = List.of(ArrayList.class, HashSet.class, LinkedHashSet.class);
