@@ -370,7 +370,41 @@ public class H_Challenges {
     public void h9_mapOfMapsOfClassesAndInterfaces() {
 
         List<Class<?>> origin = List.of(ArrayList.class, HashSet.class, LinkedHashSet.class);
-        Map<Class<?>, Map<Boolean, Set<Class<?>>>> result = null; // TODO
+        Function<Class<?>, Stream<Class<?>>> superClasses =
+                clazz -> Stream.<Class<?>>iterate(clazz, Class::getSuperclass)
+                        .takeWhile(Objects::nonNull);
+
+        Function<Stream<? extends Class<?>>, Stream<? extends Class<?>>> classAndInterfaces =
+                stream -> stream.flatMap(clazz -> Stream.of(Stream.of(clazz), Arrays.stream(clazz.getInterfaces())))
+                        .flatMap(Function.identity());
+
+        Function<Class<?>, Stream<? extends Class<?>>> superClassesAndInterfaces = superClasses.andThen(classAndInterfaces);
+
+        Predicate<Class<?>> isConcrete = c -> ! Modifier.isAbstract(c.getModifiers());
+        Predicate<Class<?>> isInterface = Class::isInterface;
+        Predicate<Class<?>> isInterfaceOrConcreteClass = isInterface.or(isConcrete);
+
+        // 1) To understand the algorithm, write out the previous processing as a stream pattern.
+        //    This isn't used directly, but will be converted to a collector below.
+        Map<Boolean, Set<Class<?>>> unusedResult =
+                origin.stream()
+                        .flatMap(superClassesAndInterfaces)
+                        .filter(isInterfaceOrConcreteClass)
+                        .collect(Collectors.partitioningBy(isInterface,
+                                Collectors.toSet()));
+
+        // 2) Convert the processing to a collector
+        Collector<Class<?>, ?, Map<Boolean, Set<Class<?>>>> collector =
+                Collectors.flatMapping(superClassesAndInterfaces,
+                        Collectors.filtering(isInterfaceOrConcreteClass,
+                                Collectors.partitioningBy(isInterface,
+                                        Collectors.toSet())));
+
+        // 3) use it as a downstream collector
+        Map<Class<?>, Map<Boolean, Set<Class<?>>>> result =
+                origin.stream()
+                        .collect(Collectors.groupingBy(Function.identity(),
+                                collector));
 
         assertEquals(
             Map.of(
