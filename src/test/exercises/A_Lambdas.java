@@ -167,7 +167,7 @@ public class A_Lambdas {
      * Write a lambda expression that appends the
      * string "abc" to the given StringBuilder.
      */
-    @Test @Ignore
+    @Test
     public void c_consumer1() {
         Consumer<StringBuilder> cons = sb -> sb.append("abc");
 
