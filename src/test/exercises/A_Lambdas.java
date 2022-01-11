@@ -169,7 +169,7 @@ public class A_Lambdas {
      */
     @Test @Ignore
     public void c_consumer1() {
-        Consumer<StringBuilder> cons = null; // TODO
+        Consumer<StringBuilder> cons = sb -> sb.append("abc");
 
         StringBuilder sb = new StringBuilder("xyz");
         cons.accept(sb);
