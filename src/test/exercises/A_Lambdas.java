@@ -179,7 +179,7 @@ public class A_Lambdas {
     /**
      * Write a lambda expression that clears the given list.
      */
-    @Test @Ignore
+    @Test
     public void c_consumer2() {
         Consumer<List<String>> cons =  list -> list.clear();
 
