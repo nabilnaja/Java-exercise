@@ -191,7 +191,7 @@ public class A_Lambdas {
     /**
      * Write an unbound method reference that clears the given list.
      */
-    @Test @Ignore
+    @Test
     public void c_consumer3() {
         Consumer<List<String>> cons = List::clear;
 
