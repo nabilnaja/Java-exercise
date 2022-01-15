@@ -193,7 +193,7 @@ public class A_Lambdas {
      */
     @Test @Ignore
     public void c_consumer3() {
-        Consumer<List<String>> cons = null; // TODO
+        Consumer<List<String>> cons = List::clear;
 
         List<String> list = new ArrayList<>(List.of("a", "b", "c"));
         cons.accept(list);
