@@ -209,7 +209,7 @@ public class A_Lambdas {
         Consumer<List<String>> c1 = list -> list.add("first");
         Consumer<List<String>> c2 = list -> list.add("second");
 
-        Consumer<List<String>> consumer = null; // TODO
+        Consumer<List<String>> consumer = c1.andThen(c2);
 
         List<String> list = new ArrayList<>(List.of("a", "b", "c"));
         consumer.accept(list);
