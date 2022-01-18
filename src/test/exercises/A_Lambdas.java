@@ -204,7 +204,7 @@ public class A_Lambdas {
      * Given two consumers, create a consumer that passes the String to the
      * first consumer, then to the second.
      */
-    @Test @Ignore
+    @Test
     public void c_consumer4() {
         Consumer<List<String>> c1 = list -> list.add("first");
         Consumer<List<String>> c2 = list -> list.add("second");
